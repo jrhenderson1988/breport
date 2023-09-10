@@ -67,14 +67,14 @@ public class BDDReportListener implements TestExecutionListener {
   private List<String> getGivenWhenThenLines(MethodSource methodSource) {
     var method = methodSource.getJavaMethod();
 
-    var bdd = method.getAnnotation(BDD.class);
+    var bdd = method.getAnnotation(BReport.class);
     var given = method.getAnnotation(Given.class);
     var when = method.getAnnotation(When.class);
     var then = method.getAnnotation(Then.class);
 
-    var givenText = prefix("Given: ", supply(given, Given::value), supply(bdd, BDD::given));
-    var whenText = prefix("When: ", supply(when, When::value), supply(bdd, BDD::when));
-    var thenText = prefix("Then: ", supply(then, Then::value), supply(bdd, BDD::then));
+    var givenText = prefix("Given: ", supply(given, Given::value), supply(bdd, BReport::given));
+    var whenText = prefix("When: ", supply(when, When::value), supply(bdd, BReport::when));
+    var thenText = prefix("Then: ", supply(then, Then::value), supply(bdd, BReport::then));
 
     return Stream.of(givenText, whenText, thenText).filter(Objects::nonNull).toList();
   }

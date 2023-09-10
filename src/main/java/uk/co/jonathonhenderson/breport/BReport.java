@@ -9,11 +9,10 @@ import java.lang.annotation.Target;
 @Documented
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface BDD {
+public @interface BReport {
   String given() default "";
 
   String when();
 
   String then();
 }
-
